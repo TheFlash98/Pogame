@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/road" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/pothole"
         android:layout_width="95dp"
         android:layout_height="134dp"
         android:layout_marginBottom="8dp"
@@ -38,7 +38,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.523"
-        app:srcCompat="@drawable/pothole" />
+        app:srcCompat="@drawable/pothole"
+        android:onClick="remove"/>
 
     <ImageView
         android:id="@+id/car"
