@@ -31,7 +31,7 @@ public class PlayGame extends AppCompatActivity {
         final ImageView potholeView2 = (findViewById(R.id.pothole2));
         final ImageView potholeView3 = (findViewById(R.id.pothole3));
         ValueAnimator animation = ObjectAnimator.ofFloat(carView, "translationY", -2000f);
-        animation.setDuration(10000);
+        animation.setDuration(5000);
         animation.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationEnd(Animator a) {
@@ -108,7 +108,7 @@ public class PlayGame extends AppCompatActivity {
     public void remove(View view) {
         if(view.getId() == R.id.pothole) {
             ObjectAnimator animation = ObjectAnimator.ofFloat(view, "translationX", 1000f);
-            animation.setDuration(4000);
+            animation.setDuration(2000);
             animation.start();
             moved[0] = true;
         } else if(view.getId() == R.id.pothole3) {
@@ -118,7 +118,7 @@ public class PlayGame extends AppCompatActivity {
             moved[2] = true;
         } else if(view.getId() == R.id.pothole2) {
             ObjectAnimator animation = ObjectAnimator.ofFloat(view, "translationX", -1000f);
-            animation.setDuration(10000);
+            animation.setDuration(1000);
             animation.start();
             moved[1] = true;
         }
