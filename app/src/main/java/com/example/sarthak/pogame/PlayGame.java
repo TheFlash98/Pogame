@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -38,7 +39,9 @@ public class PlayGame extends AppCompatActivity {
                 for(int i = 0; i < 3; i++) {
                     score += collision[i];
                 }
-
+                Intent intent = new Intent(PlayGame.this, Result.class);
+                intent.putExtra("score", score);
+                startActivity(intent);
             }
 
             @Override
