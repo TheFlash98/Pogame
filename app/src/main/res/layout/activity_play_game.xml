@@ -23,6 +23,24 @@
         app:srcCompat="@drawable/road" />
 
     <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="95dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523"
+        app:srcCompat="@drawable/pothole" />
+
+    <ImageView
         android:id="@+id/car"
         android:layout_width="128dp"
         android:layout_height="164dp"
@@ -37,11 +55,5 @@
         app:srcCompat="@drawable/car"
         android:onClick="animate"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/pothole"-->
-        <!--android:layout_width="75dp"-->
-        <!--android:layout_height="56dp"-->
-        <!--app:srcCompat="@drawable/pothole"-->
-        <!--tools:layout_editor_absoluteX="266dp"-->
-        <!--tools:layout_editor_absoluteY="160dp" />-->
+
 </android.support.constraint.ConstraintLayout>
