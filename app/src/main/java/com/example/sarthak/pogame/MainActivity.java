@@ -14,12 +14,16 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String url = "http://10.70.26.227:5000/api/v1/potholes";
+    private static final String url = "http://10.70.26.227:5000/api/v1/info?id=12345";
     OkHttpClient okHttpClient = new OkHttpClient();
 
     @Override
@@ -61,7 +65,31 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Response response) throws IOException {
                 System.out.println(response.code());
                 final TextView textView = (TextView) findViewById(R.id.score);
-                textView.setText(response.body().string());
+                String s = (response.body().string());
+                try {
+                    JSONObject resp = new JSONObject(s);
+                    System.out.println(resp);
+
+                    JSONObject jsonRootObject = new JSONObject(s);
+                    JSONArray jsonArray = jsonRootObject.getJSONArray("collection");
+
+                    int arr[] = new int[jsonArray.length()];
+                    for(int i=0; i < jsonArray.length(); i++){
+                        arr[i] = (jsonArray.getInt(i));
+                    }
+
+                } catch (JSONException j){
+                    System.out.println(j.getMessage());
+                }
+//                textView.setText(s);
+//                System.out.println(s);
+
+//                try {
+//                    JSONArray jsonArray = new JSONArray(s);
+////                    JSONObject object = new JSONObject(jsonArray);
+//                    System.out.println(jsonArray);
+//                    System.out.println("Keys");
+//                } catch (JSONException e){}
             }
         });
     }
