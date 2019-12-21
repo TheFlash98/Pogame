@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.okhttp.Callback;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         View.OnClickListener buttonOnClickListener = new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, PlayGame.class);
+                Intent intent = new Intent(MainActivity.this, PollingActivity.class);
                 startActivity(intent);
             }
         };
@@ -64,7 +65,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response response) throws IOException {
                 System.out.println(response.code());
-                final TextView textView = (TextView) findViewById(R.id.score);
+
+                ImageView imageView1 = findViewById(R.id.imageView3);
+                ImageView imageView2 = findViewById(R.id.imageView4);
+                ImageView imageView3 = findViewById(R.id.imageView5);
+
                 String s = (response.body().string());
                 try {
                     JSONObject resp = new JSONObject(s);
@@ -76,20 +81,45 @@ public class MainActivity extends AppCompatActivity {
                     int arr[] = new int[jsonArray.length()];
                     for(int i=0; i < jsonArray.length(); i++){
                         arr[i] = (jsonArray.getInt(i));
+
+                        switch (arr[i]){
+                            case 1: MainActivity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    ImageView imageView = findViewById(R.id.imageView2);
+                                    imageView.setImageResource(R.drawable.spade);
+                                    }
+                                });
+
+
+                            case 2: MainActivity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    ImageView imageView = findViewById(R.id.imageView3);
+                                    imageView.setImageResource(R.drawable.diamond);
+                                    }
+                                });
+                                break;
+                            case 3: MainActivity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    ImageView imageView = findViewById(R.id.imageView4);
+                                    imageView.setImageResource(R.drawable.clubs);
+                                    }
+                                });
+                                break;
+                            case 4: MainActivity.this.runOnUiThread(new Runnable() {
+                                public void run() {
+                                    ImageView imageView = findViewById(R.id.imageView5);
+                                    imageView.setImageResource(R.drawable.hearts);
+                                    }
+                                });
+
+                        }
                     }
+
+
 
                 } catch (JSONException j){
                     System.out.println(j.getMessage());
                 }
-//                textView.setText(s);
-//                System.out.println(s);
-
-//                try {
-//                    JSONArray jsonArray = new JSONArray(s);
-////                    JSONObject object = new JSONObject(jsonArray);
-//                    System.out.println(jsonArray);
-//                    System.out.println("Keys");
-//                } catch (JSONException e){}
             }
         });
     }

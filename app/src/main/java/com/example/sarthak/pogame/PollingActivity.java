@@ -16,13 +16,24 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 public class PollingActivity extends AppCompatActivity {
-    private static final String url = "http://10.70.26.227:5000/api/v1/";
+
+    private static final String url = "http://10.70.26.227:5000/api/v1/potholes?id=12345";
     OkHttpClient okHttpClient = new OkHttpClient();
+    private static int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_polling);
+
+        Bundle extras = getIntent().getExtras();
+        if(getIntent().hasExtra("value"))
+            count += extras.getInt("value");
+
+        if(count==3){
+            Intent intent = new Intent(PollingActivity.this, PlayGame.class);
+            startActivity(intent);
+        }
 
         while(true){
             try{

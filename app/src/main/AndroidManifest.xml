@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".PlayGame" />
         <activity android:name=".Result"></activity>
+        <activity android:name=".PollingActivity" />
+        <activity android:name=".ConfirmActivity" />
     </application>
 
 </manifest>

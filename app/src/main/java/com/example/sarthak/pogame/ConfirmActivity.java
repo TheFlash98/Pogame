@@ -35,6 +35,7 @@ public class ConfirmActivity extends AppCompatActivity {
                 } catch (IOException e) {}
 
                 Intent intent = new Intent(ConfirmActivity.this, PollingActivity.class);
+                intent.putExtra("value", 1);
                 startActivity(intent);
             }
         });

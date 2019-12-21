@@ -12,7 +12,7 @@
         android:layout_height="63dp"
         android:text="Did you experience any pothole?"
         android:textAlignment="center"
-        android:textSize="20"
+        android:textSize="20px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
